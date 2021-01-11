@@ -1,11 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { QuestionCard } from "./Components/QuestionCard";
 
-export class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                Edit src/App.js and save to reload.
-            </div>
-        );
+export function App() {
+    const [ answers, setAnswers ] = useState([])
+    const [currentQuestion, setCurrentQuestion] = useState(1)
+    
+    function selectAnswer(value) {
+        let a = answers;
+        a[currentQuestion] = value
+        setAnswers(a)
     }
+    
+    return (
+         <QuestionCard
+             question={currentQuestion}
+             answer={answers[currentQuestion]}
+             selectAnswer={selectAnswer}
+             nextCallback={() => setCurrentQuestion(currentQuestion+1)}
+             prevCallback={() => setCurrentQuestion(currentQuestion-1)}
+         />
+    );
 }
+
