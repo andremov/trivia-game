@@ -9,7 +9,7 @@ export function QuestionFooting( { correctCount, maxQuestion, nextCallback, answ
     useEffect(() => {
         if ( correctCount > 0 ) {
             setAddFX(true)
-            setTimeout(() => setAddFX(false), 1000)
+            setTimeout(() => setAddFX(false), 600)
         }
     }, [ correctCount ])
     
