@@ -1,16 +1,20 @@
 import React from 'react';
 import { Answer } from "./Answer";
-import { Question } from "./Question";
-import { question_data } from "../Utils/Data";
+import { QuestionHeading } from "./QuestionHeading";
 import { QuestionNav } from "./QuestionNav";
 
-export function QuestionCard( { question, answer, prevCallback, nextCallback, selectAnswer } ) {
+export function QuestionCard( { questionData, questionCount, maxQuestion, correctCount, answer, nextCallback, selectAnswer } ) {
     const answers = [ true, false ]
     
     return (
         <div className={'question-card'}>
-            <Question data={question_data[question].question} />
-            <div className={'question-answers'}>
+            <QuestionHeading
+                curQuestion={questionCount}
+                maxQuestion={maxQuestion}
+                data={questionData.question}
+            />
+            
+            <div className={'question-options'}>
                 {
                     answers.map(( item, i ) => {
                         return <Answer
@@ -18,18 +22,21 @@ export function QuestionCard( { question, answer, prevCallback, nextCallback, se
                             value={item}
                             key={i}
                             selected={answer !== undefined}
-                            isAnswer={question_data[question].answer === item}
+                            showBadge={answer === item}
+                            isAnswer={questionData.answer === item}
                         />
                     })
                 }
             </div>
+            
             <QuestionNav
-                prevCallback={prevCallback}
                 nextCallback={nextCallback}
-                curQuestion={question}
-                maxQuestion={question_data.length - 1}
+                toResultsCallback={questionCount === maxQuestion}
+                maxQuestion={maxQuestion}
+                correctCount={correctCount}
             />
         </div>
+    
     );
 }
 

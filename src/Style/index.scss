@@ -1,0 +1,68 @@
+
+@import "variables";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+}
+
+#root {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  flex: 1;
+  border-radius: 10px;
+  background-color: $lighter-color;
+  box-shadow: 0 5px 0 -1px #00000030;
+  font-size: 1.2em;
+  margin: 5px 0 10px;
+  padding: 0;
+  transition: 0.2s;
+  transform: translateY(-5px);
+
+  &:hover {
+    background-color: $lightest-color;
+    box-shadow: 0 4px 0 -1px #00000030;
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    box-shadow: 0 0 0 -1px #00000030;
+    transform: translateY(0px);
+  }
+
+  &:disabled {
+    color: #ffffff70;
+    fill: #ffffff70;
+    box-shadow: 0 0 0 0 #000000;
+    transform: translateY(0px);
+  }
+}
+
+svg {
+  width: 1.2em;
+  height: 1.2em;
+  margin: 0 10px;
+}
+
+.styled-div {
+  background-color: $lighter-color;
+  font-size: 1.2em;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}

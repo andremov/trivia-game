@@ -1,0 +1,134 @@
+@import "variables";
+
+
+//QUESTION CARD STYLES
+.question-card {
+  height: 500px;
+  background-color: $base-color;
+  color: white;
+  fill: white;
+  box-shadow: 0 3.5px 0 -1px #00000030;
+  border-radius: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+//HEADING STYLES
+.question-card > .card-heading {
+  @extend .styled-div;
+
+  width: fit-content;
+  min-width: 600px;
+  flex: 2;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  // QUESTION COUNTER INSIDE HEADING
+  > .question-counter {
+    font-size: 0.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    line-height: 30px;
+  }
+
+  > h3 {
+    flex: 3;
+    margin: 0;
+  }
+}
+
+
+// OPTIONS FOR QUESTION STYLES
+.question-card > .question-options {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+
+  // OPTION OBJECT INSIDE QUESTION OPTIONS DIV
+  > .question-option {
+    width: 100%;
+
+    // RIGHT ANSWER COLORS
+    &.right-answer {
+      background-color: $right-color;
+      color: $lightest-color;
+    }
+
+    // WRONG ANSWER COLORS
+    &.wrong-answer {
+      background-color: $wrong-color;
+      color: $lightest-color;
+    }
+
+    // BADGE CONTAINER IN THE OPTION
+    > .badge-container {
+      float: right;
+      width: 0;
+      height: 0;
+
+      > svg {
+        transform: translateX(-130%);
+      }
+    }
+  }
+}
+
+
+// FOOTING STYLES
+.question-card > .question-footing {
+  flex: 1;
+  display: flex;
+
+  > .nav-button {
+    flex: 1;
+    margin: 5px 0 5px 0;
+  }
+}
+
+// QUESTION INFO INSIDE FOOTING
+.question-card > .question-footing > .question-info {
+  @extend .styled-div;
+
+  position: relative;
+  margin: 5px 10px 5px 0;
+  flex: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // ADDITION DOODAD
+  > .addition-animation {
+    position: absolute;
+    right: 30px;
+    animation: 0.5s wiggle-anim;
+  }
+}
+
+@keyframes wiggle-anim {
+
+  @for $i from 0 through 4 {
+    0% {
+      transform: rotate(-30deg) scale(0.7);
+    }
+    75% {
+      transform: rotate(10deg) scale(1.2);
+    }
+    100% {
+      transform: rotate(0deg) scale(1.0);
+    }
+  }
+
+}

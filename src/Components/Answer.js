@@ -1,14 +1,28 @@
 import React from 'react';
+import { ReactComponent as CheckSVG } from "../Assets/check.svg";
+import { ReactComponent as CrossSVG } from "../Assets/cross.svg";
 
-export function Answer({value, isAnswer, onClick, selected}) {
+export function Answer( { value, isAnswer, onClick, selected, showBadge } ) {
     return (
         <button
-            className={'question-answer'+(selected? isAnswer? ' right-answer' : ' wrong-answer' : '')}
+            className={'question-option' + (selected ? isAnswer ? ' right-answer' : ' wrong-answer' : '')}
             onClick={onClick}
             disabled={selected}
         >
-            {value? 'True' : 'False'}
+            {value ? 'True' : 'False'}
+            <Symbol show={showBadge} symbol={isAnswer} />
         </button>
     );
 }
 
+function Symbol( { show, symbol } ) {
+    if (!show) {
+        return <div className={'badge-container'}> </div>
+    }
+    
+    if (symbol) {
+        return <div className={'badge-container'}> <CheckSVG /> </div>
+    }
+    
+    return <div className={'badge-container'}> <CrossSVG /> </div>
+}
