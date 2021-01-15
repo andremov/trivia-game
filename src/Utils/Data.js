@@ -7,7 +7,7 @@ export const question_data = [
     },
     {
         question : 'Question 2',
-        answer : true
+        answer : false
     },
     {
         question : 'Question 3',

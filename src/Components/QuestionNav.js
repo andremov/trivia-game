@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { ReactComponent as NextSVG } from "../Assets/next.svg";
 import { ReactComponent as CheckSVG } from "../Assets/check.svg";
 
-export function QuestionNav( { correctCount, maxQuestion, nextCallback, toResultsCallback } ) {
-    const [ addition, setAddition ] = useState(false)
+export function QuestionNav( { correctCount, maxQuestion, nextCallback, answeredQ } ) {
+    const [ showAddFX, setAddFX ] = useState(false)
     
     useEffect(() => {
         if ( correctCount > 0 ) {
-            setAddition(true)
-            setTimeout(() => setAddition(false), 1000)
+            setAddFX(true)
+            setTimeout(() => setAddFX(false), 1000)
         }
     }, [ correctCount ])
     
@@ -18,27 +18,34 @@ export function QuestionNav( { correctCount, maxQuestion, nextCallback, toResult
             <div className={'question-info'}>
                 <CheckSVG />
                 <span>{correctCount + '/' + maxQuestion}</span>
-                <AdditionAnimation show={addition} />
+                <AdditionAnimation showFX={showAddFX} />
             </div>
             
-            <button
-                className={'nav-button'}
-                onClick={nextCallback}
-                disabled={toResultsCallback}
-            >
-                <NextSVG />
-            </button>
-            
+            <NavButton
+                nextCallback={nextCallback}
+                answeredQ={answeredQ}
+            />
+        
         </div>
     );
 }
 
-function AdditionAnimation( { show } ) {
-    if (!show) {
+function AdditionAnimation( { showFX } ) {
+    if ( !showFX ) {
         return <></>
     }
     
     return <div className={'addition-animation'}>
         +1
     </div>
+}
+
+function NavButton( { nextCallback, answeredQ } ) {
+    return <button
+        className={'nav-button'}
+        onClick={nextCallback}
+        disabled={!answeredQ}
+    >
+        <NextSVG />
+    </button>
 }

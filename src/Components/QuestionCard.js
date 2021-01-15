@@ -3,14 +3,14 @@ import { Answer } from "./Answer";
 import { QuestionHeading } from "./QuestionHeading";
 import { QuestionNav } from "./QuestionNav";
 
-export function QuestionCard( { questionData, questionCount, maxQuestion, correctCount, answer, nextCallback, selectAnswer } ) {
+export function QuestionCard( { questionData, curQ, maxQ, correctCount, answer, nextCallback, selectAnswer } ) {
     const answers = [ true, false ]
     
     return (
         <div className={'question-card'}>
             <QuestionHeading
-                curQuestion={questionCount}
-                maxQuestion={maxQuestion}
+                curQuestion={curQ}
+                maxQuestion={maxQ}
                 data={questionData.question}
             />
             
@@ -21,7 +21,7 @@ export function QuestionCard( { questionData, questionCount, maxQuestion, correc
                             onClick={() => selectAnswer(item)}
                             value={item}
                             key={i}
-                            selected={answer !== undefined}
+                            answeredQ={answer !== undefined}
                             showBadge={answer === item}
                             isAnswer={questionData.answer === item}
                         />
@@ -31,8 +31,8 @@ export function QuestionCard( { questionData, questionCount, maxQuestion, correc
             
             <QuestionNav
                 nextCallback={nextCallback}
-                toResultsCallback={questionCount === maxQuestion}
-                maxQuestion={maxQuestion}
+                answeredQ={answer !== undefined}
+                maxQuestion={maxQ}
                 correctCount={correctCount}
             />
         </div>
