@@ -10,12 +10,12 @@ export function Answer( { value, isAnswer, onClick, answeredQ, showBadge } ) {
             disabled={answeredQ}
         >
             {value ? 'True' : 'False'}
-            <Symbol show={showBadge} symbol={isAnswer} />
+            <Badge show={showBadge} symbol={isAnswer} />
         </button>
     );
 }
 
-function Symbol( { show, symbol } ) {
+function Badge( { show, symbol } ) {
     if (!show) {
         return <div className={'badge-container'}> </div>
     }

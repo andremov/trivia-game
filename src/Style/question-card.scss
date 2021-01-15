@@ -4,6 +4,7 @@
 //QUESTION CARD STYLES
 .question-card {
   height: 500px;
+  min-width: 600px;
   background-color: $base-color;
   color: white;
   fill: white;
@@ -15,15 +16,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  > * {
+    width: 100%;
+  }
 }
 
 
 //HEADING STYLES
-.question-card > .card-heading {
+.question-card > .q-head {
   @extend .styled-div;
 
-  width: fit-content;
-  min-width: 600px;
   flex: 2;
 
   padding: 10px;
@@ -33,16 +36,6 @@
   flex-direction: column;
   justify-content: space-between;
 
-  // QUESTION COUNTER INSIDE HEADING
-  > .question-counter {
-    font-size: 0.6em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    line-height: 30px;
-  }
-
   > h3 {
     flex: 3;
     margin: 0;
@@ -50,8 +43,19 @@
 }
 
 
+// QUESTION COUNTER INSIDE HEADING
+.question-card > .q-head > .question-counter {
+  font-size: 0.6em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  line-height: 30px;
+}
+
+
 // OPTIONS FOR QUESTION STYLES
-.question-card > .question-options {
+.question-card > .q-body {
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -87,22 +91,35 @@
 
 
 // FOOTING STYLES
-.question-card > .question-footing {
+.q-foot {
   flex: 1;
   display: flex;
+
+  > .question-info {
+    margin: 5px 10px 5px 0;
+  }
 
   > .nav-button {
     flex: 1;
     margin: 5px 0 5px 0;
   }
+
+  > .back-button {
+    flex: 1;
+    margin: 5px 0 5px 0;
+
+    > svg {
+      transform: rotate(180deg);
+    }
+  }
 }
 
+
 // QUESTION INFO INSIDE FOOTING
-.question-card > .question-footing > .question-info {
+.question-info {
   @extend .styled-div;
 
   position: relative;
-  margin: 5px 10px 5px 0;
   flex: 2;
 
   display: flex;
@@ -116,6 +133,7 @@
     animation: 0.5s wiggle-anim;
   }
 }
+
 
 @keyframes wiggle-anim {
 
@@ -131,4 +149,12 @@
     }
   }
 
+}
+
+// RESULTS DISPLAY
+.question-card > .results {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
 }

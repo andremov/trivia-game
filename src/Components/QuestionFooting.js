@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as NextSVG } from "../Assets/next.svg";
 import { ReactComponent as CheckSVG } from "../Assets/check.svg";
+import { ReactComponent as ResultsSVG } from "../Assets/results.svg";
 
-export function QuestionNav( { correctCount, maxQuestion, nextCallback, answeredQ } ) {
+export function QuestionFooting( { correctCount, maxQuestion, nextCallback, answeredQ, isLast } ) {
     const [ showAddFX, setAddFX ] = useState(false)
     
     useEffect(() => {
@@ -13,7 +14,7 @@ export function QuestionNav( { correctCount, maxQuestion, nextCallback, answered
     }, [ correctCount ])
     
     return (
-        <div className={'question-footing'}>
+        <div className={'q-foot'}>
             
             <div className={'question-info'}>
                 <CheckSVG />
@@ -24,6 +25,7 @@ export function QuestionNav( { correctCount, maxQuestion, nextCallback, answered
             <NavButton
                 nextCallback={nextCallback}
                 answeredQ={answeredQ}
+                isLast={isLast}
             />
         
         </div>
@@ -40,12 +42,15 @@ function AdditionAnimation( { showFX } ) {
     </div>
 }
 
-function NavButton( { nextCallback, answeredQ } ) {
+function NavButton( { nextCallback, answeredQ, isLast } ) {
     return <button
         className={'nav-button'}
         onClick={nextCallback}
         disabled={!answeredQ}
     >
-        <NextSVG />
+        {!isLast?
+            <NextSVG /> :
+            <ResultsSVG />
+        }
     </button>
 }

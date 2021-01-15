@@ -1,7 +1,7 @@
 import React from 'react';
 import { Answer } from "./Answer";
 import { QuestionHeading } from "./QuestionHeading";
-import { QuestionNav } from "./QuestionNav";
+import { QuestionFooting } from "./QuestionFooting";
 
 export function QuestionCard( { questionData, curQ, maxQ, correctCount, answer, nextCallback, selectAnswer } ) {
     const answers = [ true, false ]
@@ -14,7 +14,7 @@ export function QuestionCard( { questionData, curQ, maxQ, correctCount, answer, 
                 data={questionData.question}
             />
             
-            <div className={'question-options'}>
+            <div className={'q-body'}>
                 {
                     answers.map(( item, i ) => {
                         return <Answer
@@ -29,10 +29,11 @@ export function QuestionCard( { questionData, curQ, maxQ, correctCount, answer, 
                 }
             </div>
             
-            <QuestionNav
+            <QuestionFooting
                 nextCallback={nextCallback}
                 answeredQ={answer !== undefined}
                 maxQuestion={maxQ}
+                isLast={curQ === maxQ}
                 correctCount={correctCount}
             />
         </div>

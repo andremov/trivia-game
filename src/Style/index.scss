@@ -8,16 +8,25 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: white;
+  background-color: black;
 }
 
-#root {
+.theme-backdrop {
+  width: 100vw;
+  height: 100vh;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  flex-direction: column;
+
+  > .theme-switcher {
+    position: absolute;
+    width: 200px;
+    height: 70px;
+    top: 10px;
+    background-color: dimgray;
+  }
 }
 
 button {
