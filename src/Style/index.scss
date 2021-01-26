@@ -8,9 +8,24 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(circle at 10% 10%, #3070aa 30%, transparent 30.1%),
-              radial-gradient(circle at 85% 50%, #23d655 30%, transparent 30.1%),
-              radial-gradient(circle at 35% 80%, #7206d0 30%, transparent 30.1%)
+  //background: radial-gradient(circle at 10% 10%, #3070aa 30%, transparent 30.1%),
+  //            radial-gradient(circle at 85% 50%, #23d655 30%, transparent 30.1%),
+  //            radial-gradient(circle at 35% 80%, #7206d0 30%, transparent 30.1%)
+}
+
+.polka-dot {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+  background-color: var(--polkaColor);
+
+  position: absolute;
+  top: var(--coordY);
+  left: var(--coordX);
+  transform: translate(-50%, -50%);
+
+  transition: 5.5s ease-in-out;
 }
 
 .theme-backdrop {
@@ -33,25 +48,20 @@ body {
 .trivia-card {
   background: #ffffff40;
   box-shadow: 0 8px 32px 0 #20202050;
-  backdrop-filter: blur( 10px );
+  backdrop-filter: blur(10px);
   border-radius: 10px;
   border: 1px solid #ffffff40;
 
   height: 800px;
   min-width: 600px;
   max-width: 90vw;
-  //background-color: $base-color;
-  //backdrop-filter: blur(5px);
-  //color: white;
-  //fill: white;
-  //box-shadow: 0 3.5px 0 -1px #00000030;
-  //border-radius: 10px;
-  //padding: 10px;
-  //box-sizing: border-box;
-  //font-size: 36px;
-  //display: flex;
-  //flex-direction: column;
-  //justify-content: space-between;
+
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 button {
@@ -109,7 +119,6 @@ svg {
   border-radius: 50%;
   animation: loading-spin 2s infinite linear;
 }
-
 
 .flex-1 {
   flex: 1;

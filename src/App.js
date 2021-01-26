@@ -3,6 +3,7 @@ import { ErrorBoundary } from "./Utils/ErrorBoundary";
 import { Trivia } from "./Components/Trivia";
 import { getTriviaQuestions } from "./Services/Api";
 import { Loading } from "./Components/Loading";
+import { PolkaDot } from "./Components/FancyFX/PolkaDot";
 
 export class App extends React.Component {
     
@@ -24,6 +25,12 @@ export class App extends React.Component {
     render() {
         return (
             <ErrorBoundary>
+                <PolkaDot color={'#1286f1'} />
+                <PolkaDot color={'#13de85'} />
+                <PolkaDot color={'#d0067f'} />
+                <PolkaDot color={'#7206d0'} />
+                <PolkaDot color={'#ef7e05'} />
+                <PolkaDot color={'#06d0bf'} />
                 <div
                     className={'theme-backdrop'}
                 >
