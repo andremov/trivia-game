@@ -1,48 +1,79 @@
 import React, { useState } from 'react';
-import { QuestionCard } from "./QuestionCard";
-import { ResultCard } from "./ResultCard";
+import { Question } from "./Cards/Question";
+import { Results } from "./Cards/Results";
+import { Preamble } from "./Cards/Preamble";
 
-export function Trivia( { q_data } ) {
-    const [ curAnswer, setCurAnswer ] = useState(undefined)
-    const [ curQ, setCurQ ] = useState(1)
-    const [ rightCount, setRightCount ] = useState(0)
+export function Trivia( { trivia_data } ) {
+    const [ answers, setAnswers ] = useState(new Array(trivia_data.length))
+    const [ curQ, setCurQ ] = useState(0)
+    const [ correct, setCorrectCount ] = useState(0)
+    
+    console.log(trivia_data)
     
     function selectAnswer( value ) {
-        setRightCount(rightCount + (q_data[curQ].answer === value ? 1 : 0))
-        setCurAnswer(value)
+        let answers = answers;
+        answers[curQ] = value;
+        console.log(trivia_data)
+        console.log(value)
+        setAnswers(answers)
     }
     
-    function nextQuestion() {
-        setCurAnswer(undefined)
+    function next() {
         setCurQ(curQ + 1)
     }
     
     function reset() {
-        setCurAnswer(undefined);
-        setCurQ(1)
-        setRightCount(0)
+        setCurQ(0)
     }
     
-    if ( curQ === q_data.length ) {
+    function start() {
+        setCurQ(1)
+    }
+    
+    return (
+        <div className={'trivia-card'}>
+            <ContentWrapper
+                trivia_data={trivia_data}
+                curQ={curQ}
+                maxQ={trivia_data.length}
+                resetCallback={reset}
+                startCallback={start}
+                nextCallback={next}
+                selectAnswer={selectAnswer}
+                curAnswer={answers[curQ]}
+                correctCount={correct}
+            />
+        </div>
+    )
+}
+
+function ContentWrapper( props ) {
+    const { trivia_data, curQ, maxQ, resetCallback, startCallback, curAnswer, selectAnswer, nextCallback, correctCount } = props;
+    if ( curQ === maxQ ) {
         return (
-            <ResultCard
-                maxQuestion={q_data.length - 1}
-                correctCount={rightCount}
-                backCallback={reset}
+            <Results
+                maxQuestion={maxQ - 1}
+                correctCount={correctCount}
+                resetCallback={resetCallback}
+            />
+        )
+    } else if ( curQ === 0 ) {
+        return (
+            <Preamble
+                startCallback={startCallback}
             />
         )
     } else {
         return (
-            <QuestionCard
-                questionData={q_data[curQ]}
+            <Question
+                questionData={trivia_data[curQ]}
                 curQ={curQ}
-                maxQ={q_data.length - 1}
-                correctCount={rightCount}
+                maxQ={maxQ - 1}
+                correctCount={correctCount}
                 answer={curAnswer}
                 selectAnswer={selectAnswer}
-                nextCallback={nextQuestion}
+                nextCallback={nextCallback}
             />
         );
     }
 }
-

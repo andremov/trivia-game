@@ -1,27 +1,43 @@
 import React from 'react';
 import { ErrorBoundary } from "./Utils/ErrorBoundary";
 import { Trivia } from "./Components/Trivia";
-import { question_data } from "./Utils/Data";
+import { getTriviaQuestions } from "./Services/Api";
+import { Loading } from "./Components/Loading";
 
-export function App() {
-    const [ lightMode, setLightMode ] = React.useState(false);
+export class App extends React.Component {
     
+    constructor( props ) {
+        super(props);
+        this.state = {
+            question_data : undefined
+        }
+    }
     
-    return (
-        <ErrorBoundary>
-            <div
-                className={'theme-backdrop'}
-                style={lightMode ? { backgroundColor : 'white' } : { backgroundColor : 'black' }}
-            >
-                <button className={'theme-switcher'} onClick={() => setLightMode(!lightMode)}>
-                    Switch Theme
-                </button>
-                
-                <Trivia
-                    q_data={question_data}
-                />
-            </div>
-        </ErrorBoundary>
-    );
+    componentDidMount() {
+        getTriviaQuestions({}).then(r => {
+            this.setState({
+                question_data : r.results
+            })
+        })
+    }
+    
+    render() {
+        return (
+            <ErrorBoundary>
+                <div
+                    className={'theme-backdrop'}
+                >
+                    {this.state.question_data?
+                        // Show the trivia card when question data is loaded
+                        <Trivia
+                            trivia_data={this.state.question_data}
+                        /> :
+                        // Show the loading card while question data is loading
+                        <Loading />
+                    }
+                </div>
+            </ErrorBoundary>
+        );
+    }
 }
 

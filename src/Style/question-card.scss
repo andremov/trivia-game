@@ -1,160 +1,138 @@
-@import "variables";
-
-
-//QUESTION CARD STYLES
-.question-card {
-  height: 500px;
-  min-width: 600px;
-  background-color: $base-color;
-  color: white;
-  fill: white;
-  box-shadow: 0 3.5px 0 -1px #00000030;
-  border-radius: 10px;
-  padding: 10px;
-  box-sizing: border-box;
-  font-size: 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  > * {
-    width: 100%;
-  }
-}
-
-
-//HEADING STYLES
-.question-card > .q-head {
-  @extend .styled-div;
-
-  flex: 2;
-
-  padding: 10px;
-  box-sizing: border-box;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  > h3 {
-    flex: 3;
-    margin: 0;
-  }
-}
-
-
-// QUESTION COUNTER INSIDE HEADING
-.question-card > .q-head > .question-counter {
-  font-size: 0.6em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  line-height: 30px;
-}
-
-
-// OPTIONS FOR QUESTION STYLES
-.question-card > .q-body {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-
-  // OPTION OBJECT INSIDE QUESTION OPTIONS DIV
-  > .question-option {
-    width: 100%;
-
-    // RIGHT ANSWER COLORS
-    &.right-answer {
-      background-color: $right-color;
-      color: $lightest-color;
-    }
-
-    // WRONG ANSWER COLORS
-    &.wrong-answer {
-      background-color: $wrong-color;
-      color: $lightest-color;
-    }
-
-    // BADGE CONTAINER IN THE OPTION
-    > .badge-container {
-      float: right;
-      width: 0;
-      height: 0;
-
-      > svg {
-        transform: translateX(-130%);
-      }
-    }
-  }
-}
-
-
-// FOOTING STYLES
-.q-foot {
-  flex: 1;
-  display: flex;
-
-  > .question-info {
-    margin: 5px 10px 5px 0;
-  }
-
-  > .nav-button {
-    flex: 1;
-    margin: 5px 0 5px 0;
-  }
-
-  > .back-button {
-    flex: 1;
-    margin: 5px 0 5px 0;
-
-    > svg {
-      transform: rotate(180deg);
-    }
-  }
-}
-
-
-// QUESTION INFO INSIDE FOOTING
-.question-info {
-  @extend .styled-div;
-
-  position: relative;
-  flex: 2;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  // ADDITION DOODAD
-  > .addition-animation {
-    position: absolute;
-    right: 30px;
-    animation: 0.3s wiggle-anim;
-  }
-}
-
-
-@keyframes wiggle-anim {
-
-  @for $i from 0 through 4 {
-    0% {
-      transform: rotate(-30deg) scale(0.7);
-    }
-    75% {
-      transform: rotate(10deg) scale(1.2);
-    }
-    100% {
-      transform: rotate(0deg) scale(1.0);
-    }
-  }
-
-}
-
-// RESULTS DISPLAY
-.question-card > .results {
-  display: flex;
-  flex-direction: column;
-
-  height: 100%;
-}
+//@import "variables";
+//
+//
+////HEADING STYLES
+//.question-card > .q-head {
+//  @extend .styled-div;
+//
+//  flex: 2;
+//
+//  padding: 10px;
+//  box-sizing: border-box;
+//
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: space-between;
+//
+//  > h3 {
+//    flex: 3;
+//    margin: 0;
+//  }
+//}
+//
+//
+//// QUESTION COUNTER INSIDE HEADING
+//.question-card > .q-head > .question-counter {
+//  font-size: 0.6em;
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  flex: 1;
+//  line-height: 30px;
+//}
+//
+//
+//// OPTIONS FOR QUESTION STYLES
+//.question-card > .q-body {
+//  flex: 2;
+//  display: flex;
+//  flex-direction: column;
+//
+//  // OPTION OBJECT INSIDE QUESTION OPTIONS DIV
+//  > .question-option {
+//    width: 100%;
+//
+//    // RIGHT ANSWER COLORS
+//    &.right-answer {
+//      background-color: $right-color;
+//      color: $lightest-color;
+//    }
+//
+//    // WRONG ANSWER COLORS
+//    &.wrong-answer {
+//      background-color: $wrong-color;
+//      color: $lightest-color;
+//    }
+//
+//    // BADGE CONTAINER IN THE OPTION
+//    > .badge-container {
+//      float: right;
+//      width: 0;
+//      height: 0;
+//
+//      > svg {
+//        transform: translateX(-130%);
+//      }
+//    }
+//  }
+//}
+//
+//
+//// FOOTING STYLES
+//.q-foot {
+//  flex: 1;
+//  display: flex;
+//
+//  > .question-info {
+//    margin: 5px 10px 5px 0;
+//  }
+//
+//  > .nav-button {
+//    flex: 1;
+//    margin: 5px 0 5px 0;
+//  }
+//
+//  > .back-button {
+//    flex: 1;
+//    margin: 5px 0 5px 0;
+//
+//    > svg {
+//      transform: rotate(180deg);
+//    }
+//  }
+//}
+//
+//
+//// QUESTION INFO INSIDE FOOTING
+//.question-info {
+//  @extend .styled-div;
+//
+//  position: relative;
+//  flex: 2;
+//
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//
+//  // ADDITION DOODAD
+//  > .addition-animation {
+//    position: absolute;
+//    right: 30px;
+//    animation: 0.3s wiggle-anim;
+//  }
+//}
+//
+//
+//@keyframes wiggle-anim {
+//
+//  @for $i from 0 through 4 {
+//    0% {
+//      transform: rotate(-30deg) scale(0.7);
+//    }
+//    75% {
+//      transform: rotate(10deg) scale(1.2);
+//    }
+//    100% {
+//      transform: rotate(0deg) scale(1.0);
+//    }
+//  }
+//
+//}
+//
+//// RESULTS DISPLAY
+//.question-card > .results {
+//  display: flex;
+//  flex-direction: column;
+//
+//  height: 100%;
+//}

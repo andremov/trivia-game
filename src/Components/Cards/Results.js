@@ -1,15 +1,15 @@
-import React from 'react';
-import { ReactComponent as CheckSVG } from "../Assets/check.svg";
-import { ReactComponent as NextSVG } from "../Assets/next.svg";
+import React, { Fragment } from 'react';
+import { ReactComponent as CheckSVG } from "../../Assets/check.svg";
+import { ReactComponent as NextSVG } from "../../Assets/next.svg";
 
-const remarks = ['You\'ll get it next time!','Nice try!', 'Well done!', 'Excellent!'];
+const remarks = [ 'You\'ll get it next time!', 'Nice try!', 'Well done!', 'Excellent!' ];
 
-export function ResultCard( { correctCount, maxQuestion, backCallback } ) {
+export function Results( { correctCount, maxQuestion, resetCallback } ) {
     return (
-        <div className={'question-card'}>
+        <Fragment>
             
             <div className={'q-head'}>
-                <div className={'question-counter'}/>
+                <div className={'question-counter'} />
                 
                 <h3>{remarks[correctCount]}</h3>
             </div>
@@ -22,13 +22,13 @@ export function ResultCard( { correctCount, maxQuestion, backCallback } ) {
             <div className={'q-foot'}>
                 <button
                     className={'back-button'}
-                    onClick={backCallback}
+                    onClick={resetCallback}
                 >
                     <NextSVG />
                 </button>
             </div>
-            
-        </div>
+        
+        </Fragment>
     );
 }
 

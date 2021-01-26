@@ -14,7 +14,7 @@ export function QuestionFooting( { correctCount, maxQuestion, nextCallback, answ
     }, [ correctCount ])
     
     return (
-        <div className={'q-foot'}>
+        <div className={'flex-1 flex-row'}>
             
             <div className={'question-info'}>
                 <CheckSVG />

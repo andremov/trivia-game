@@ -1,15 +1,12 @@
 import React from 'react';
-import {ReactComponent as QuestionSVG} from "../Assets/question.svg";
 
-export function QuestionHeading( { curQuestion, maxQuestion, data } ) {
+export function QuestionHeading( { data } ) {
+    let b = document.createElement('div');
+    b.innerHTML=data;
+    
     return (
-        <div className={'q-head'}>
-            <div className={'question-counter'}>
-                <QuestionSVG />
-                <span>{curQuestion + '/' + maxQuestion}</span>
-            </div>
-            
-            <h3>{data}</h3>
+        <div className={'flex-3 styled-div'}>
+            {b.innerText}
         </div>
     );
 }

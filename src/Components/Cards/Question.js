@@ -1,20 +1,31 @@
-import React from 'react';
-import { Answer } from "./Answer";
-import { QuestionHeading } from "./QuestionHeading";
-import { QuestionFooting } from "./QuestionFooting";
+import React, { Fragment } from 'react';
+import { Answer } from "../Answer";
+import { QuestionHeading } from "../QuestionHeading";
+import { QuestionFooting } from "../QuestionFooting";
+import { QuestionInfo } from "../QuestionInfo";
+import { Timer } from "../Timer";
 
-export function QuestionCard( { questionData, curQ, maxQ, correctCount, answer, nextCallback, selectAnswer } ) {
+export function Question( { questionData, curQ, maxQ, correctCount, answer, nextCallback, selectAnswer } ) {
     const answers = [ true, false ]
     
     return (
-        <div className={'question-card'}>
-            <QuestionHeading
+        <Fragment>
+            <Timer
+                startTime={20}
+                curQuestion={curQ}
+            />
+            
+            <QuestionInfo
                 curQuestion={curQ}
                 maxQuestion={maxQ}
+                category={questionData.category}
+            />
+            
+            <QuestionHeading
                 data={questionData.question}
             />
             
-            <div className={'q-body'}>
+            <div className={'flex-2 flex-col'}>
                 {
                     answers.map(( item, i ) => {
                         return <Answer
@@ -36,7 +47,7 @@ export function QuestionCard( { questionData, curQ, maxQ, correctCount, answer, 
                 isLast={curQ === maxQ}
                 correctCount={correctCount}
             />
-        </div>
+        </Fragment>
     
     );
 }
