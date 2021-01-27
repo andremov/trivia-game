@@ -1,2 +1,39 @@
 
 $lighter-color : #ffffff50;
+
+
+.flex-1 {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.flex-2 {
+  flex: 2;
+  padding: 0 10px;
+}
+
+.flex-3 {
+  flex: 3;
+  padding: 0 10px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bold-text {
+  font-weight: 700;
+}

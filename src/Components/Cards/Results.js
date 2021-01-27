@@ -1,6 +1,4 @@
 import React, { Fragment } from 'react';
-import { ReactComponent as CheckSVG } from "../../Assets/check.svg";
-import { ReactComponent as NextSVG } from "../../Assets/next.svg";
 import { QuestionInfo } from "../QuestionInfo";
 import { ResultItem } from "../ResultItem";
 

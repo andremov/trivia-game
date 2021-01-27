@@ -31,37 +31,19 @@ body {
   align-items: center;
   justify-content: center;
 
-  > .theme-switcher {
-    position: absolute;
-    width: 200px;
-    height: 70px;
-    top: 10px;
-    background-color: dimgray;
+  &.dark-theme {
+    background-color: #323232;
+    color: white;
   }
 }
 
-.trivia-card {
-  background: #ffffff40;
-  box-shadow: 0 8px 32px 0 #20202050;
-  backdrop-filter: blur(15px);
-  border-radius: 10px;
-  border: 1px solid #ffffff40;
-
-  height: 800px;
-  min-width: 600px;
-  max-width: 90vw;
-
-  padding: 10px;
-  box-sizing: border-box;
-  font-size: 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  > div {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
+.theme-button {
+  position: absolute;
+  width: 150px;
+  height: 45px;
+  bottom: 3px;
+  left: 3px;
+  background-color: dimgray;
 }
 
 button {
@@ -127,13 +109,6 @@ svg {
   margin: 0 10px;
 }
 
-.styled-div {
-  background-color: $lighter-color;
-  font-size: 1.2em;
-  border-radius: 10px;
-  margin-bottom: 5px;
-}
-
 .loading-circle {
   border: 8px solid transparent;
   border-top-color: rgba(31, 31, 31, 0.67);
@@ -143,75 +118,6 @@ svg {
   animation: loading-spin 2s infinite linear;
 }
 
-.flex-1 {
-  flex: 1;
-  padding: 0 10px;
-}
-
-.flex-2 {
-  flex: 2;
-  padding: 0 10px;
-}
-
-.flex-3 {
-  flex: 3;
-  padding: 0 10px;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-center-all {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.progress-bar {
-  position: relative;
-  color: black;
-  fill: black;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 0;
-
-  > .progress-display {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: 0.5s;
-    background: linear-gradient(0deg, #593acb 50%, #6195bc 100%);
-    height: 100%;
-    width: 100%;
-    clip-path: polygon(0% 0%, var(--percent) 0%, var(--percent) 100%, 0% 100%);
-    color: white;
-    fill: white;
-  }
-}
-
-.bold-text {
-  font-weight: 700;
-}
-
-.badge-container {
-  float: right;
-  width: 0;
-  height: 0;
-
-  > svg {
-    transform: translateX(-200%);
-  }
-}
-
 .result-item {
   font-size: 0.9em;
   margin: 1px 0;
@@ -219,8 +125,11 @@ svg {
   color: black;
   background-color: $lighter-color;
 
-  &.correct-answer {
-    background-color: rgba(103, 255, 27, 0.31);
+  .dark-theme & {
+    color: white;
   }
 
+  &.correct-answer {
+    background-color: rgba(103, 255, 27, 0.3);
+  }
 }
