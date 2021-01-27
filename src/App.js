@@ -15,7 +15,7 @@ export class App extends React.Component {
     }
     
     componentDidMount() {
-        getTriviaQuestions({}).then(r => {
+        getTriviaQuestions({amount: settings.number_of_questions}).then(r => {
             this.setState({
                 question_data : r.results
             })

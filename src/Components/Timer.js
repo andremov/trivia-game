@@ -1,29 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import { settings } from "../Utils/Settings";
 
-export function Timer( { curQuestion, timeoutCallback, startTime } ) {
-    const [ time, setTime ] = useState(startTime)
+let timer;
+
+export function Timer( { curQuestion, timeoutCallback, isOpen } ) {
+    const red = '#bc371f';
+    const [ time, setTime ] = useState(settings.timer_duration)
     const [ degs, setDegs ] = useState([ 90, -90 ])
-    const [ colors, setColors ] = useState([ 'red', 'red' ])
+    const [ colors, setColors ] = useState([ red, red ])
     
     useEffect(() => {
-        setTimeout(() => nextTick(startTime), 1000)
+        setTime(settings.timer_duration + 1)
+        clearTimeout(timer)
+        nextTick(settings.timer_duration + 1)
     }, [ curQuestion ])
     
+    useEffect(() => {
+        if ( !isOpen ) {
+            clearTimeout(timer)
+        }
+    }, [ isOpen ])
+    
     function nextTick( tick ) {
+        
         setTime(tick - 1)
-        let visTick = Math.max(tick-1,0)
+        let visTick = Math.max(tick - 1, 0)
         let deg;
-        if ( visTick >= startTime * 0.5 ) {
-            deg = 90 + (180 * visTick / (startTime * 0.5))
-            console.log(deg)
+        if ( visTick >= settings.timer_duration * 0.5 ) {
+            deg = 90 + (180 * visTick / (settings.timer_duration * 0.5))
         } else {
-            deg = 90 + (180 * (visTick - (startTime * 0.5)) / (startTime * 0.5))
-            console.log(deg)
+            deg = 90 + (180 * (visTick - (settings.timer_duration * 0.5)) / (settings.timer_duration * 0.5))
         }
         setDegs([ deg, -90 ])
-        setColors([ tick > startTime * 0.5 ? 'red' : 'white', 'red' ])
-        if ( tick > 0 ) {
-            setTimeout(() => nextTick(tick - 1), 1000)
+        setColors([ tick - 1 >= settings.timer_duration * 0.5 ? red : 'white', red ])
+        
+        if ( tick - 1 > 0 ) {
+            timer = setTimeout(() => nextTick(tick - 1), 1000)
         } else {
             timeoutCallback()
         }
