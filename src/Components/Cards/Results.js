@@ -1,30 +1,38 @@
 import React, { Fragment } from 'react';
 import { ReactComponent as CheckSVG } from "../../Assets/check.svg";
 import { ReactComponent as NextSVG } from "../../Assets/next.svg";
+import { QuestionInfo } from "../QuestionInfo";
+import { ResultItem } from "../ResultItem";
 
-const remarks = [ 'You\'ll get it next time!', 'Nice try!', 'Well done!', 'Excellent!' ];
-
-export function Results( { correctCount, maxQuestion, resetCallback } ) {
+export function Results( { maxQuestion, resetCallback, answer_data, trivia_data } ) {
     return (
         <Fragment>
             
-            <div className={'q-head'}>
-                <div className={'question-counter'} />
-                
-                <h3>{remarks[correctCount]}</h3>
+            <QuestionInfo
+                curQuestion={maxQuestion}
+                maxQuestion={maxQuestion}
+                category={'Results'}
+            />
+            
+            <div className={'flex-3 flex-col'}>
+                {trivia_data.map(( item, i ) => <ResultItem
+                        key={i}
+                        index={i}
+                        selected={answer_data[i]}
+                        correct={item.correct_answer}
+                    />
+                )}
             </div>
             
-            <div className={'question-info'}>
-                <CheckSVG />
-                <span>{correctCount + '/' + maxQuestion}</span>
-            </div>
-            
-            <div className={'q-foot'}>
+            <div className={'flex-2 flex-col'}>
+                <div className={'flex-1'}>
+                    Score: {trivia_data.filter((item,i) => item.correct_answer === answer_data[i]).length}
+                </div>
                 <button
-                    className={'back-button'}
+                    className={'primary green'}
                     onClick={resetCallback}
                 >
-                    <NextSVG />
+                    Try again!
                 </button>
             </div>
         
