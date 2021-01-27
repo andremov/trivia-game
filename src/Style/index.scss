@@ -193,3 +193,35 @@ svg {
   display: flex;
   flex-direction: column;
 }
+
+.flex-center-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-bar {
+  position: relative;
+  color: black;
+  fill: black;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+
+  > .progress-display {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(0deg, #593acb 50%, #6195bc 100%);
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(0% 0%, var(--percent) 0%, var(--percent) 100%, 0% 100%);
+    color: white;
+    fill: white;
+  }
+}
+
+.bold-text {
+  font-weight: 700;
+}
