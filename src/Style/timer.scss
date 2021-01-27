@@ -5,7 +5,9 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  color: white;
 
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,7 +16,8 @@
 
   background-image:
           linear-gradient(var(--angle1), var(--color1) 50%, transparent 50%),
-          linear-gradient(var(--angle2), var(--color2) 50%, transparent 50%);
+          linear-gradient(var(--angle2), var(--color2) 50%, transparent 50%),
+          linear-gradient(0, white 0%, white 100%);
 
   > .timer-bkg {
     width: 85%;
