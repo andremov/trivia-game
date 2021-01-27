@@ -2,31 +2,30 @@ import React, { useState } from 'react';
 import { Question } from "./Cards/Question";
 import { Results } from "./Cards/Results";
 import { Preamble } from "./Cards/Preamble";
+import { settings } from "../Utils/Settings";
 
 export function Trivia( { trivia_data } ) {
     const [ answers, setAnswers ] = useState(new Array(trivia_data.length))
     const [ curQ, setCurQ ] = useState(0)
-    const [ correct, setCorrectCount ] = useState(0)
     const [ open, setOpen ] = useState(true)
     
     function answer( value ) {
         let answers1 = answers;
         answers1[curQ - 1] = value;
-        setOpen(false)
-        console.log(trivia_data[curQ - 1].correct_answer, value)
-        if ( trivia_data[curQ - 1].correct_answer === value ) {
-            setCorrectCount(correct + 1)
-            console.log('Correct!')
-        }
         setAnswers(answers1)
-    }
-    
-    function next() {
-        setCurQ(curQ + 1)
+        
+        setOpen(false) // close the question temporarily
+        
+        setTimeout(() => { // after 5 seconds, move to next question
+            setCurQ(curQ + 1)
+            setOpen(true)
+        }, settings.question_buffer * 1000)
     }
     
     function reset() {
         setCurQ(0)
+        setAnswers(new Array(trivia_data.length))
+        setOpen(true)
     }
     
     function start() {
@@ -38,7 +37,7 @@ export function Trivia( { trivia_data } ) {
             <ContentWrapper
                 trivia_data={trivia_data}
                 answer_data={answers}
-                question_data={trivia_data[curQ-1]}
+                question_data={trivia_data[curQ - 1]}
                 curQ={curQ}
                 maxQ={trivia_data.length}
                 
@@ -46,7 +45,7 @@ export function Trivia( { trivia_data } ) {
                 startCallback={start}
                 answerCallback={answer}
                 
-                curAnswer={answers[curQ-1]}
+                curAnswer={answers[curQ - 1]}
                 isOpen={open}
             />
         </div>
@@ -56,10 +55,10 @@ export function Trivia( { trivia_data } ) {
 function ContentWrapper( props ) {
     const { trivia_data, answer_data, question_data, curQ, maxQ, resetCallback, isOpen, startCallback, curAnswer, answerCallback } = props;
     
-    if ( curQ === maxQ ) {
+    if ( curQ-1 === maxQ ) {
         return (
             <Results
-                maxQuestion={maxQ - 1}
+                maxQuestion={maxQ}
                 resetCallback={resetCallback}
                 trivia_data={trivia_data}
                 answer_data={answer_data}
