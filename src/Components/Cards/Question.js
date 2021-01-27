@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import { Answer } from "../Answer";
-import { QuestionHeading } from "../QuestionHeading";
-import { QuestionFooting } from "../QuestionFooting";
+import { QuestionStatement } from "../QuestionStatement";
 import { QuestionInfo } from "../QuestionInfo";
 import { Timer } from "../Timer";
 
 export function Question( { questionData, curQ, maxQ, correctCount, answer, nextCallback, selectAnswer } ) {
-    const answers = [ true, false ]
+    const answers = [...questionData.incorrect_answers, questionData.correct_answer].sort((a,b) => a>b? -1 : 1)
     
     return (
         <Fragment>
@@ -21,7 +20,7 @@ export function Question( { questionData, curQ, maxQ, correctCount, answer, next
                 category={questionData.category}
             />
             
-            <QuestionHeading
+            <QuestionStatement
                 data={questionData.question}
             />
             
@@ -39,14 +38,6 @@ export function Question( { questionData, curQ, maxQ, correctCount, answer, next
                     })
                 }
             </div>
-            
-            <QuestionFooting
-                nextCallback={nextCallback}
-                answeredQ={answer !== undefined}
-                maxQuestion={maxQ}
-                isLast={curQ === maxQ}
-                correctCount={correctCount}
-            />
         </Fragment>
     
     );
