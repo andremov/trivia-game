@@ -67,32 +67,63 @@ button {
   cursor: pointer;
   color: white;
   flex: 1;
+  max-height: 100px;
   border-radius: 10px;
-  background-color: $lighter-color;
-  box-shadow: 0 5px 0 -1px #00000030;
+  box-shadow: 0 1px 3px 3px #00000040;
   font-size: 1.2em;
-  margin: 5px 0 10px;
+  margin: 5px;
   padding: 0;
   transition: 0.2s;
-  transform: translateY(-5px);
+  transform: scale(0.99);
+  font-weight: 700;
 
   &:hover {
-    background-color: $lightest-color;
-    box-shadow: 0 4px 0 -1px #00000030;
-    transform: translateY(-4px);
+    transform: scale(1);
   }
 
   &:active {
-    box-shadow: 0 0 0 -1px #00000030;
-    transform: translateY(0px);
+    transform: scale(0.98);
   }
 
   &:disabled {
-    color: #ffffff70;
-    fill: #ffffff70;
-    box-shadow: 0 0 0 0 #000000;
-    transform: translateY(0px);
+    transform: scale(0.95);
+    background: lightgray;
   }
+
+  &.primary {
+    background: linear-gradient(0deg, #593acb 50%, #6195bc 100%);
+    background-size: 200% 200%;
+
+    &.green {
+      background: linear-gradient(0deg, #3acb91 50%, #69bc61 100%);
+    }
+
+    &.red {
+      background: linear-gradient(0deg, #cb633a 50%, #bc9e61 100%);
+    }
+
+    &:hover {
+      background-position: 0 30%;
+    }
+  }
+
+  //&:hover {
+  //  background-color: $lightest-color;
+  //  box-shadow: 0 4px 0 -1px #00000030;
+  //  transform: translateY(-4px);
+  //}
+  //
+  //&:active {
+  //  box-shadow: 0 0 0 -1px #00000030;
+  //  transform: translateY(0px);
+  //}
+  //
+  //&:disabled {
+  //  color: #ffffff70;
+  //  fill: #ffffff70;
+  //  box-shadow: 0 0 0 0 #000000;
+  //  transform: translateY(0px);
+  //}
 }
 
 svg {
@@ -110,7 +141,7 @@ svg {
 
 .loading-circle {
   border: 8px solid transparent;
-  border-top-color: #0000ffaa;
+  border-top-color: rgba(31, 31, 31, 0.67);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -129,6 +160,26 @@ svg {
 
 .flex-3 {
   flex: 3;
+  padding: 0 10px;
+}
+
+.flex-4 {
+  flex: 4;
+  padding: 0 10px;
+}
+
+.flex-5 {
+  flex: 5;
+  padding: 0 10px;
+}
+
+.flex-6 {
+  flex: 6;
+  padding: 0 10px;
+}
+
+.flex-7 {
+  flex: 7;
   padding: 0 10px;
 }
 
