@@ -2,12 +2,12 @@ import React from 'react';
 import { ReactComponent as CheckSVG } from "../Assets/check.svg";
 import { ReactComponent as CrossSVG } from "../Assets/cross.svg";
 
-export function Answer( { value, isAnswer, onClick, answeredQ, showBadge } ) {
+export function Answer( { value, isAnswer, onClick, isOpen, showBadge } ) {
     return (
         <button
-            className={'primary' + (answeredQ ? isAnswer ? ' right-answer' : ' wrong-answer' : '')}
+            className={'primary' + (!isOpen ? isAnswer ? ' right-answer' : ' wrong-answer' : '')}
             onClick={onClick}
-            disabled={answeredQ}
+            disabled={!isOpen}
         >
             {value}
             <Badge show={showBadge} symbol={isAnswer} />

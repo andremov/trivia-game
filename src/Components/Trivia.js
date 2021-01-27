@@ -7,15 +7,18 @@ export function Trivia( { trivia_data } ) {
     const [ answers, setAnswers ] = useState(new Array(trivia_data.length))
     const [ curQ, setCurQ ] = useState(0)
     const [ correct, setCorrectCount ] = useState(0)
+    const [ open, setOpen ] = useState(true)
     
-    console.log(trivia_data)
-    
-    function selectAnswer( value ) {
-        let answers = answers;
-        answers[curQ] = value;
-        console.log(trivia_data)
-        console.log(value)
-        setAnswers(answers)
+    function answer( value ) {
+        let answers1 = answers;
+        answers1[curQ - 1] = value;
+        setOpen(false)
+        console.log(trivia_data[curQ - 1].correct_answer, value)
+        if ( trivia_data[curQ - 1].correct_answer === value ) {
+            setCorrectCount(correct + 1)
+            console.log('Correct!')
+        }
+        setAnswers(answers1)
     }
     
     function next() {
@@ -34,27 +37,32 @@ export function Trivia( { trivia_data } ) {
         <div className={'trivia-card'}>
             <ContentWrapper
                 trivia_data={trivia_data}
+                answer_data={answers}
+                question_data={trivia_data[curQ-1]}
                 curQ={curQ}
                 maxQ={trivia_data.length}
+                
                 resetCallback={reset}
                 startCallback={start}
-                nextCallback={next}
-                selectAnswer={selectAnswer}
-                curAnswer={answers[curQ]}
-                correctCount={correct}
+                answerCallback={answer}
+                
+                curAnswer={answers[curQ-1]}
+                isOpen={open}
             />
         </div>
     )
 }
 
 function ContentWrapper( props ) {
-    const { trivia_data, curQ, maxQ, resetCallback, startCallback, curAnswer, selectAnswer, nextCallback, correctCount } = props;
+    const { trivia_data, answer_data, question_data, curQ, maxQ, resetCallback, isOpen, startCallback, curAnswer, answerCallback } = props;
+    
     if ( curQ === maxQ ) {
         return (
             <Results
                 maxQuestion={maxQ - 1}
-                correctCount={correctCount}
                 resetCallback={resetCallback}
+                trivia_data={trivia_data}
+                answer_data={answer_data}
             />
         )
     } else if ( curQ === 0 ) {
@@ -66,13 +74,12 @@ function ContentWrapper( props ) {
     } else {
         return (
             <Question
-                questionData={trivia_data[curQ]}
+                questionData={question_data}
                 curQ={curQ}
-                maxQ={maxQ - 1}
-                correctCount={correctCount}
+                maxQ={maxQ}
                 answer={curAnswer}
-                selectAnswer={selectAnswer}
-                nextCallback={nextCallback}
+                isOpen={isOpen}
+                selectAnswer={answerCallback}
             />
         );
     }

@@ -4,7 +4,7 @@ import { QuestionStatement } from "../QuestionStatement";
 import { QuestionInfo } from "../QuestionInfo";
 import { Timer } from "../Timer";
 
-export function Question( { questionData, curQ, maxQ, correctCount, answer, nextCallback, selectAnswer } ) {
+export function Question( { questionData, curQ, isOpen, maxQ, answer, selectAnswer } ) {
     const answers = [...questionData.incorrect_answers, questionData.correct_answer].sort((a,b) => a>b? -1 : 1)
     
     return (
@@ -31,9 +31,9 @@ export function Question( { questionData, curQ, maxQ, correctCount, answer, next
                             onClick={() => selectAnswer(item)}
                             value={item}
                             key={i}
-                            answeredQ={answer !== undefined}
+                            isOpen={isOpen}
                             showBadge={answer === item}
-                            isAnswer={questionData.answer === item}
+                            isAnswer={questionData.correct_answer === item}
                         />
                     })
                 }

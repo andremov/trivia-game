@@ -66,6 +66,7 @@ button {
   outline: none;
   cursor: pointer;
   color: white;
+  fill: white;
   flex: 1;
   max-height: 100px;
   border-radius: 10px;
@@ -85,11 +86,6 @@ button {
     transform: scale(0.98);
   }
 
-  &:disabled {
-    transform: scale(0.95);
-    background: lightgray;
-  }
-
   &.primary {
     background: linear-gradient(0deg, #593acb 50%, #6195bc 100%);
     background-size: 200% 200%;
@@ -107,23 +103,19 @@ button {
     }
   }
 
-  //&:hover {
-  //  background-color: $lightest-color;
-  //  box-shadow: 0 4px 0 -1px #00000030;
-  //  transform: translateY(-4px);
-  //}
-  //
-  //&:active {
-  //  box-shadow: 0 0 0 -1px #00000030;
-  //  transform: translateY(0px);
-  //}
-  //
-  //&:disabled {
-  //  color: #ffffff70;
-  //  fill: #ffffff70;
-  //  box-shadow: 0 0 0 0 #000000;
-  //  transform: translateY(0px);
-  //}
+  &:disabled {
+    transform: scale(0.9);
+
+    &.right-answer {
+      background: linear-gradient(90deg, #23bf61 0%, #94b785 10%, #94b785 90%, #23bf61 100%);
+      font-size: 1.1em;
+    }
+
+    &.wrong-answer {
+      background: linear-gradient(90deg, #b84d1c 0%, #c89797 10%, #c89797 90%, #b84d1c 100%);
+      font-size: 0.9em;
+    }
+  }
 }
 
 svg {
@@ -224,4 +216,14 @@ svg {
 
 .bold-text {
   font-weight: 700;
+}
+
+.badge-container {
+  float: right;
+  width: 0;
+  height: 0;
+
+  > svg {
+    transform: translateX(-200%);
+  }
 }

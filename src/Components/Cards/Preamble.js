@@ -12,7 +12,7 @@ export function Preamble({startCallback}) {
                 <span>Twenty seconds.</span>
                 <span>Have you got what it takes?</span>
             </div>
-            <button className={'primary start'} onClick={startCallback}>
+            <button className={'primary green'} onClick={startCallback}>
                 Start!
             </button>
         </Fragment>
