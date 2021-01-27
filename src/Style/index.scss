@@ -22,7 +22,7 @@ body {
   left: var(--coordX);
   transform: translate(-50%, -50%);
 
-  transition: 5.5s ease-in-out;
+  transition: 20.5s ease-in-out;
 }
 
 .theme-backdrop {
@@ -45,7 +45,7 @@ body {
 .trivia-card {
   background: #ffffff40;
   box-shadow: 0 8px 32px 0 #20202050;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
   border-radius: 10px;
   border: 1px solid #ffffff40;
 
