@@ -2,8 +2,9 @@ import React from 'react';
 import { ErrorBoundary } from "./Utils/ErrorBoundary";
 import { Trivia } from "./Components/Trivia";
 import { getTriviaQuestions } from "./Services/Api";
-import { Loading } from "./Components/Loading";
+import { LoadingCircle } from "./Components/LoadingCircle";
 import { PolkaDot } from "./Components/FancyFX/PolkaDot";
+import { settings } from "./Utils/Settings";
 
 export class App extends React.Component {
     
@@ -40,7 +41,7 @@ export class App extends React.Component {
                             trivia_data={this.state.question_data}
                         /> :
                         // Show the loading card while question data is loading
-                        <Loading />
+                        <LoadingCircle />
                     }
                 </div>
             </ErrorBoundary>

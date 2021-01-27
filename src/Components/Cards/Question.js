@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Answer } from "../Answer";
+import { AnswerButton } from "../AnswerButton";
 import { QuestionStatement } from "../QuestionStatement";
 import { QuestionInfo } from "../QuestionInfo";
 import { Timer } from "../Timer";
@@ -10,8 +10,9 @@ export function Question( { questionData, curQ, isOpen, maxQ, answer, selectAnsw
     return (
         <Fragment>
             <Timer
-                startTime={20}
+                isOpen={isOpen}
                 curQuestion={curQ}
+                timeoutCallback={() => selectAnswer("No answer")}
             />
             
             <QuestionInfo
@@ -27,7 +28,7 @@ export function Question( { questionData, curQ, isOpen, maxQ, answer, selectAnsw
             <div className={'flex-2 flex-col'}>
                 {
                     answers.map(( item, i ) => {
-                        return <Answer
+                        return <AnswerButton
                             onClick={() => selectAnswer(item)}
                             value={item}
                             key={i}

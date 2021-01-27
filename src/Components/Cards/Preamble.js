@@ -8,8 +8,8 @@ export function Preamble({startCallback}) {
             </div>
             <div className={'flex-3 flex-col flex-center-all'}>
                 <span>Ten questions.</span>
+                <span>Ten seconds.</span>
                 <span>Two options.</span>
-                <span>Twenty seconds.</span>
                 <span>Have you got what it takes?</span>
             </div>
             <button className={'primary green'} onClick={startCallback}>

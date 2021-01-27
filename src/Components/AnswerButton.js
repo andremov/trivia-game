@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactComponent as CheckSVG } from "../Assets/check.svg";
 import { ReactComponent as CrossSVG } from "../Assets/cross.svg";
 
-export function Answer( { value, isAnswer, onClick, isOpen, showBadge } ) {
+export function AnswerButton( { value, isAnswer, onClick, isOpen, showBadge } ) {
     return (
         <button
             className={'primary' + (!isOpen ? isAnswer ? ' right-answer' : ' wrong-answer' : '')}
