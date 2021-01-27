@@ -1,16 +1,13 @@
 @import "variables";
 @import "animations";
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  //background: radial-gradient(circle at 10% 10%, #3070aa 30%, transparent 30.1%),
-  //            radial-gradient(circle at 85% 50%, #23d655 30%, transparent 30.1%),
-  //            radial-gradient(circle at 35% 80%, #7206d0 30%, transparent 30.1%)
 }
 
 .polka-dot {
