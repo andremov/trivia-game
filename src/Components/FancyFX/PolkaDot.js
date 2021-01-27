@@ -1,11 +1,11 @@
 import React from 'react';
 
 export function PolkaDot( { color } ) {
-    const [ coords, setCoords ] = React.useState([ document.body.clientWidth*0.5, 200 ])
+    const [ coords, setCoords ] = React.useState([ Math.random()*document.body.clientWidth*0.6+200, Math.random()*600 ])
     
     React.useEffect(() => {
         randomizeCoords()
-        setInterval(randomizeCoords, 5000)
+        setInterval(randomizeCoords, 20000)
     }, [ color ])
     
     function randomizeCoords() {
