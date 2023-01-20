@@ -1,3 +1,7 @@
+/**
+ * Developed by Andrés Movilla.
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Style/main.scss';
